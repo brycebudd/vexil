@@ -1,0 +1,268 @@
+==================
+Meta directive with key and value
+==================
+@title: Vexil Language Specification
+@version: 0.1.0
+
+---
+
+(document
+  (meta_directive
+    key: (identifier)
+    value: (meta_value))
+  (meta_directive
+    key: (identifier)
+    value: (meta_value)))
+
+==================
+Meta directive key only
+==================
+@draft
+
+---
+
+(document
+  (meta_directive
+    key: (identifier)))
+
+==================
+Headings levels 1 through 4
+==================
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+
+---
+
+(document
+  (heading
+    (heading_marker)
+    (text))
+  (heading
+    (heading_marker)
+    (text))
+  (heading
+    (heading_marker)
+    (text))
+  (heading
+    (heading_marker)
+    (text)))
+
+==================
+Divider
+==================
+---
+
+---
+
+(document
+  (divider))
+
+==================
+Code fence with language and identifier
+==================
+```go main.go
+package main
+
+func main() {}
+```
+
+---
+
+(document
+  (code_fence
+    language: (identifier)
+    identifier: (identifier)
+    content: (code_fence_content)))
+
+==================
+Code fence with colon identifier
+==================
+```go:main.go
+package main
+```
+
+---
+
+(document
+  (code_fence
+    language: (identifier)
+    identifier: (identifier)
+    content: (code_fence_content)))
+
+==================
+Code fence with language only
+==================
+```python
+print("hello")
+```
+
+---
+
+(document
+  (code_fence
+    language: (identifier)
+    content: (code_fence_content)))
+
+==================
+Code fence plain
+==================
+```
+plain text line
+```
+
+---
+
+(document
+  (code_fence
+    content: (code_fence_content)))
+
+==================
+Table with pipe-separated headers
+==================
+::table [Col1 | Col2]
+- Row 1 Cell 1 | Row 1 Cell 2
+- Row 2 Cell 1 | Row 2 Cell 2
+::
+
+---
+
+(document
+  (table
+    (table_header
+      (table_cell)
+      (table_cell))
+    (table_row
+      (table_cell)
+      (table_cell))
+    (table_row
+      (table_cell)
+      (table_cell))))
+
+==================
+Table with comma-separated headers
+==================
+::table [Col1, Col2]
+- A | B
+::
+
+---
+
+(document
+  (table
+    (table_header
+      (table_cell)
+      (table_cell))
+    (table_row
+      (table_cell)
+      (table_cell))))
+
+==================
+Callout with title
+==================
+!warning: Memory Threshold
+High allocation volume detected.
+
+---
+
+(document
+  (callout
+    type: (callout_type)
+    title: (callout_title)
+    (text)))
+
+==================
+Callout without title
+==================
+!note
+This is a simple note.
+
+---
+
+(document
+  (callout
+    type: (callout_type)
+    (text)))
+
+==================
+Blockquote single and multiline
+==================
+> First quote line
+> Second quote line
+
+---
+
+(document
+  (blockquote
+    (text)
+    (text)))
+
+==================
+Unordered list items
+==================
+- Root item 1
+  - Child item 1
+- Root item 2
+
+---
+
+(document
+  (unordered_list_item
+    (text))
+  (unordered_list_item
+    (text))
+  (unordered_list_item
+    (text)))
+
+==================
+Ordered list items
+==================
+1. First item
+  . Sub-step auto
+2. Second item
+
+---
+
+(document
+  (ordered_list_item
+    (text))
+  (ordered_list_item
+    (text))
+  (ordered_list_item
+    (text)))
+
+==================
+Task list items
+==================
+[ ] Incomplete task
+[x] Completed task lower
+[X] Completed task upper
+
+---
+
+(document
+  (task_list_item
+    (task_status)
+    (text))
+  (task_list_item
+    (task_status)
+    (text))
+  (task_list_item
+    (task_status)
+    (text)))
+
+==================
+Paragraph prose
+==================
+Vexil is a high-density structured text format.
+
+Second paragraph line.
+
+---
+
+(document
+  (paragraph
+    (text))
+  (paragraph
+    (text)))
