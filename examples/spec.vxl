@@ -1,0 +1,98 @@
+@title: Vexil Language Specification
+@author: Vexil Working Group
+@version: 0.1.0
+@status: Reference Draft
+
+# Vexil Document Specification
+
+Vexil (.vxl) is a *high-density*, _context-preserving_ structured text format engineered for LLM context windows, deterministic parsing, and semantic chunking. It combines the readability of Markdown with strict single-pass stream guarantees.
+
+---
+
+@id: sec-syntax-overview
+## Structural Overview
+
+Vexil partitions documents into deterministic block nodes without lookahead buffers. Inline styling supports *bold text*, _italic emphasis_, `inline code`, ~strikethrough~, and [hyperlinks](https://vexil.org). Visual assets are referenced using media syntax: [System Architecture Diagram](img:architecture.png).
+
+### List Structures
+
+Document hierarchies utilize strict two-space indentation increments for nested structures.
+
+- Unordered item at root level
+  - Nested unordered child item
+  - Another nested sibling item
+- Secondary root item
+
+Ordered workflows support explicit indices and automatic counters:
+
+1. Initial installation step
+  . Nested sub-procedure
+  . Secondary validation sub-procedure
+2. Final deployment phase
+
+Actionable items are tracked via deterministic task list states:
+
+[x] Implement single-pass block tokenizer
+[x] Add symmetric inline delimiter stack
+[ ] Benchmark zero-copy stream chunker
+
+---
+
+@id: sec-callouts-quotes
+## Callouts and Citations
+
+Executive advisories and prompt injection blocks are declared via prefixed exclamation directives:
+
+!note: Specification Guidance
+All Vexil parsers must maintain zero external dependencies and zero regular expressions.
+
+!warning: Deprecated Syntax
+Legacy block decorators without explicit line prefixes are rejected by the strict scanner.
+
+!important: Memory Allocation Invariant
+Token emission runs in single-pass linear time O(n) without lookahead backtracking.
+
+!prompt: System Evaluation Instruction
+Verify document structural consistency and emit canonical JSON AST representation.
+
+Editorial notes and cited references use standardized blockquote markers:
+
+> Context-dense document design eliminates token waste in RAG pipelines.
+> Streaming chunk boundaries guarantee atomic semantic retrieval.
+
+---
+
+@id: sec-code-tables
+## Code Fences and Tabular Data
+
+Source code listings preserve whitespace verbatim and capture optional language and file identifiers:
+
+```go main.go
+package main
+
+import (
+	"log"
+	"vexil/pkg/render"
+)
+
+func main() {
+	log.Printf("Vexil Reference Engine v0.1.0")
+}
+```
+
+Tabular datasets define explicit column structures and support escaped pipes and inline code spans:
+
+@id: tbl-syntax-matrix
+@title: Vexil Node Syntax Matrix
+::table [Construct | Syntax Pattern | Target Output]
+- Heading Level 1 | `# Title` | `<h1>Title</h1>`
+- Code Fence | `lang id` | `<pre><code class="language-lang">`
+- Escaped Pipes | Cell \| Alpha | Table cell with literal pipe
+- Inline Code Span | `a | b` | Code span with pipe
+::
+
+### Detailed Architecture
+
+#### Pipeline Invariants
+
+Every parser implementation guarantees deterministic recovery when encountering unexpected tokens.

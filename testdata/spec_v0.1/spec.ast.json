@@ -1,0 +1,566 @@
+{
+  "type": "document",
+  "meta": {
+    "author": "Vexil Working Group",
+    "status": "Reference Draft",
+    "title": "Vexil Language Specification",
+    "version": "0.1.0"
+  },
+  "children": [
+    {
+      "type": "heading",
+      "level": 1,
+      "children": [
+        {
+          "type": "text",
+          "value": "Vexil Document Specification"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Vexil (.vxl) is a "
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "high-density"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "context-preserving"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " structured text format engineered for LLM context windows, deterministic parsing, and semantic chunking. It combines the readability of Markdown with strict single-pass stream guarantees."
+        }
+      ]
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "meta": {
+        "id": "sec-syntax-overview"
+      },
+      "children": [
+        {
+          "type": "text",
+          "value": "Structural Overview"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Vexil partitions documents into deterministic block nodes without lookahead buffers. Inline styling supports "
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "bold text"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "italic emphasis"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "type": "inline_code",
+          "value": "inline code"
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "type": "strikethrough",
+          "children": [
+            {
+              "type": "text",
+              "value": "strikethrough"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": ", and "
+        },
+        {
+          "type": "link",
+          "label": [
+            {
+              "type": "text",
+              "value": "hyperlinks"
+            }
+          ],
+          "target": "https://vexil.org"
+        },
+        {
+          "type": "text",
+          "value": ". Visual assets are referenced using media syntax: "
+        },
+        {
+          "type": "media",
+          "alt": "System Architecture Diagram",
+          "target": "img:architecture.png"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "List Structures"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Document hierarchies utilize strict two-space indentation increments for nested structures."
+        }
+      ]
+    },
+    {
+      "type": "unordered_list",
+      "items": [
+        {
+          "type": "list_item",
+          "level": 0,
+          "children": [
+            {
+              "type": "text",
+              "value": "Unordered item at root level"
+            }
+          ]
+        },
+        {
+          "type": "list_item",
+          "level": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Nested unordered child item"
+            }
+          ]
+        },
+        {
+          "type": "list_item",
+          "level": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Another nested sibling item"
+            }
+          ]
+        },
+        {
+          "type": "list_item",
+          "level": 0,
+          "children": [
+            {
+              "type": "text",
+              "value": "Secondary root item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Ordered workflows support explicit indices and automatic counters:"
+        }
+      ]
+    },
+    {
+      "type": "ordered_list",
+      "items": [
+        {
+          "type": "list_item",
+          "level": 0,
+          "children": [
+            {
+              "type": "text",
+              "value": "Initial installation step"
+            }
+          ]
+        },
+        {
+          "type": "list_item",
+          "level": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Nested sub-procedure"
+            }
+          ]
+        },
+        {
+          "type": "list_item",
+          "level": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Secondary validation sub-procedure"
+            }
+          ]
+        },
+        {
+          "type": "list_item",
+          "level": 0,
+          "children": [
+            {
+              "type": "text",
+              "value": "Final deployment phase"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Actionable items are tracked via deterministic task list states:"
+        }
+      ]
+    },
+    {
+      "type": "task_list",
+      "items": [
+        {
+          "type": "task_item",
+          "checked": true,
+          "level": 0,
+          "children": [
+            {
+              "type": "text",
+              "value": "Implement single-pass block tokenizer"
+            }
+          ]
+        },
+        {
+          "type": "task_item",
+          "checked": true,
+          "level": 0,
+          "children": [
+            {
+              "type": "text",
+              "value": "Add symmetric inline delimiter stack"
+            }
+          ]
+        },
+        {
+          "type": "task_item",
+          "checked": false,
+          "level": 0,
+          "children": [
+            {
+              "type": "text",
+              "value": "Benchmark zero-copy stream chunker"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "meta": {
+        "id": "sec-callouts-quotes"
+      },
+      "children": [
+        {
+          "type": "text",
+          "value": "Callouts and Citations"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Executive advisories and prompt injection blocks are declared via prefixed exclamation directives:"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "callout_type": "note",
+      "title": "Specification Guidance",
+      "children": [
+        {
+          "type": "text",
+          "value": "All Vexil parsers must maintain zero external dependencies and zero regular expressions."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "callout_type": "warning",
+      "title": "Deprecated Syntax",
+      "children": [
+        {
+          "type": "text",
+          "value": "Legacy block decorators without explicit line prefixes are rejected by the strict scanner."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "callout_type": "important",
+      "title": "Memory Allocation Invariant",
+      "children": [
+        {
+          "type": "text",
+          "value": "Token emission runs in single-pass linear time O(n) without lookahead backtracking."
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "callout_type": "prompt",
+      "title": "System Evaluation Instruction",
+      "children": [
+        {
+          "type": "text",
+          "value": "Verify document structural consistency and emit canonical JSON AST representation."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Editorial notes and cited references use standardized blockquote markers:"
+        }
+      ]
+    },
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "text",
+          "value": "Context-dense document design eliminates token waste in RAG pipelines.\nStreaming chunk boundaries guarantee atomic semantic retrieval."
+        }
+      ]
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "meta": {
+        "id": "sec-code-tables"
+      },
+      "children": [
+        {
+          "type": "text",
+          "value": "Code Fences and Tabular Data"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Source code listings preserve whitespace verbatim and capture optional language and file identifiers:"
+        }
+      ]
+    },
+    {
+      "type": "code_fence",
+      "lang": "go",
+      "identifier": "main.go",
+      "content": "package main\n\nimport (\n\t\"log\"\n\t\"vexil/pkg/render\"\n)\n\nfunc main() {\n\tlog.Printf(\"Vexil Reference Engine v0.1.0\")\n}"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Tabular datasets define explicit column structures and support escaped pipes and inline code spans:"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        "Construct",
+        "Syntax Pattern",
+        "Target Output"
+      ],
+      "rows": [
+        [
+          [
+            {
+              "type": "text",
+              "value": "Heading Level 1"
+            }
+          ],
+          [
+            {
+              "type": "inline_code",
+              "value": "# Title"
+            }
+          ],
+          [
+            {
+              "type": "inline_code",
+              "value": "\u003ch1\u003eTitle\u003c/h1\u003e"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "text",
+              "value": "Code Fence"
+            }
+          ],
+          [
+            {
+              "type": "inline_code",
+              "value": "lang id"
+            }
+          ],
+          [
+            {
+              "type": "inline_code",
+              "value": "\u003cpre\u003e\u003ccode class=\"language-lang\"\u003e"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "text",
+              "value": "Escaped Pipes"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell | Alpha"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Table cell with literal pipe"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "text",
+              "value": "Inline Code Span"
+            }
+          ],
+          [
+            {
+              "type": "inline_code",
+              "value": "a | b"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Code span with pipe"
+            }
+          ]
+        ]
+      ],
+      "meta": {
+        "id": "tbl-syntax-matrix",
+        "title": "Vexil Node Syntax Matrix"
+      }
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Detailed Architecture"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "children": [
+        {
+          "type": "text",
+          "value": "Pipeline Invariants"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Every parser implementation guarantees deterministic recovery when encountering unexpected tokens."
+        }
+      ]
+    }
+  ]
+}
