@@ -2,6 +2,13 @@
   "name": "tree-sitter-vexil",
   "version": "0.1.0",
   "description": "Vexil grammar for tree-sitter",
+  "author": "Bryce Budd <bbudd@agileparadigm.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brycebudd/vexil.git",
+    "directory": "tree-sitter-vexil"
+  },
   "main": "bindings/node",
   "types": "bindings/node",
   "scripts": {

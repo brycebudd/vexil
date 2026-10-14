@@ -40,7 +40,7 @@ npm install tree-sitter-vexil
 Clone the repository and install the development dependencies:
 
 ```bash
-git clone https://github.com/vexil-lang/vexil.git
+git clone https://github.com/brycebudd/vexil.git
 cd vexil/tree-sitter-vexil
 npm install
 ```
@@ -79,7 +79,7 @@ Add the following language and grammar definition to `~/.config/helix/languages.
 ```toml
 [[grammar]]
 name = "vexil"
-source = { git = "https://github.com/vexil-lang/vexil", rev = "main", subpath = "tree-sitter-vexil" }
+source = { git = "https://github.com/brycebudd/vexil", rev = "main", subpath = "tree-sitter-vexil" }
 # Or for local development:
 # source = { path = "/absolute/path/to/vexil/tree-sitter-vexil" }
 
@@ -102,9 +102,9 @@ Install the query files into the Helix runtime queries directory:
 mkdir -p ~/.config/helix/runtime/queries/vexil
 
 # Symlink or copy queries
-ln -sfn /path/to/tree-sitter-vexil/queries/highlights.scm ~/.config/helix/runtime/queries/vexil/highlights.scm
-ln -sfn /path/to/tree-sitter-vexil/queries/injections.scm ~/.config/helix/runtime/queries/vexil/injections.scm
-ln -sfn /path/to/tree-sitter-vexil/queries/folds.scm ~/.config/helix/runtime/queries/vexil/folds.scm
+ln -sfn /path/to/vexil/tree-sitter-vexil/queries/highlights.scm ~/.config/helix/runtime/queries/vexil/highlights.scm
+ln -sfn /path/to/vexil/tree-sitter-vexil/queries/injections.scm ~/.config/helix/runtime/queries/vexil/injections.scm
+ln -sfn /path/to/vexil/tree-sitter-vexil/queries/folds.scm ~/.config/helix/runtime/queries/vexil/folds.scm
 ```
 
 #### Fetch & Compile
@@ -140,7 +140,7 @@ local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
 parser_config.vexil = {
   install_info = {
-    url = "https://github.com/vexil-lang/vexil", -- or local path to repository
+    url = "https://github.com/brycebudd/vexil", -- or local path to repository (e.g. "~/repos/vexil")
     files = { "tree-sitter-vexil/src/parser.c" },
     branch = "main",
     generate_requires_npm = false,
@@ -157,9 +157,9 @@ Symlink the query files into Neovim's runtime query path:
 ```bash
 mkdir -p ~/.config/nvim/queries/vexil
 
-ln -sfn /path/to/tree-sitter-vexil/queries/highlights.scm ~/.config/nvim/queries/vexil/highlights.scm
-ln -sfn /path/to/tree-sitter-vexil/queries/injections.scm ~/.config/nvim/queries/vexil/injections.scm
-ln -sfn /path/to/tree-sitter-vexil/queries/folds.scm ~/.config/nvim/queries/vexil/folds.scm
+ln -sfn /path/to/vexil/tree-sitter-vexil/queries/highlights.scm ~/.config/nvim/queries/vexil/highlights.scm
+ln -sfn /path/to/vexil/tree-sitter-vexil/queries/injections.scm ~/.config/nvim/queries/vexil/injections.scm
+ln -sfn /path/to/vexil/tree-sitter-vexil/queries/folds.scm ~/.config/nvim/queries/vexil/folds.scm
 ```
 
 #### Installation in Neovim
@@ -187,12 +187,12 @@ id = "vexil"
 name = "Vexil"
 version = "0.1.0"
 schema_version = 1
-authors = ["Vexil Authors <authors@vexil.org>"]
+authors = ["Bryce Budd <bbudd@agileparadigm.com>"]
 description = "Vexil structured markup language support for Zed"
-repository = "https://github.com/vexil-lang/vexil"
+repository = "https://github.com/brycebudd/vexil"
 
 [grammars.vexil]
-repository = "https://github.com/vexil-lang/vexil"
+repository = "https://github.com/brycebudd/vexil"
 rev = "main"
 path = "tree-sitter-vexil"
 ```
@@ -237,8 +237,8 @@ VS Code supports Tree-sitter grammars either through native Tree-sitter integrat
   },
   "tree-sitter.grammars": {
     "vexil": {
-      "path": "/path/to/tree-sitter-vexil",
-      "highlights": "/path/to/tree-sitter-vexil/queries/highlights.scm"
+      "path": "/path/to/vexil/tree-sitter-vexil",
+      "highlights": "/path/to/vexil/tree-sitter-vexil/queries/highlights.scm"
     }
   }
 }

@@ -20,11 +20,12 @@
     "description": "Vexil grammar for tree-sitter",
     "authors": [
       {
-        "name": "Vexil Authors"
+        "name": "Bryce Budd",
+        "email": "bbudd@agileparadigm.com"
       }
     ],
     "links": {
-      "repository": "https://github.com/vexil-lang/vexil"
+      "repository": "https://github.com/brycebudd/vexil"
     }
   },
   "bindings": {
