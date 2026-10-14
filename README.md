@@ -29,7 +29,7 @@
 Build the `vxl` command-line utility from source:
 
 ```bash
-git clone https://github.com/example/vexil.git
+git clone https://github.com/brycebudd/vexil.git
 cd vexil
 go build -o vxl ./cmd/vxl
 ```
