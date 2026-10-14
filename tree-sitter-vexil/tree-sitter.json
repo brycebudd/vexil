@@ -1,0 +1,38 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "vexil",
+      "camelcase": "Vexil",
+      "title": "Vexil",
+      "scope": "source.vexil",
+      "path": ".",
+      "file-types": [
+        "vxl",
+        "vexil"
+      ],
+      "injection-regex": "^(vxl|vexil)$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Vexil grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Vexil Authors"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/vexil-lang/vexil"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}

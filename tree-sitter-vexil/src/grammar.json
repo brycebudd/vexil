@@ -1,0 +1,59 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
+  "name": "vexil",
+  "rules": {
+    "document": {
+      "type": "REPEAT",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "paragraph"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_blank_line"
+          }
+        ]
+      }
+    },
+    "paragraph": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "text"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        }
+      ]
+    },
+    "text": {
+      "type": "PATTERN",
+      "value": "[^\\r\\n]+"
+    },
+    "_blank_line": {
+      "type": "SYMBOL",
+      "name": "_newline"
+    },
+    "_newline": {
+      "type": "PATTERN",
+      "value": "\\r?\\n"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "[ \\t]"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": [],
+  "reserved": {}
+}

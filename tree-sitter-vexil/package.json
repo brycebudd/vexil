@@ -1,0 +1,51 @@
+{
+  "name": "tree-sitter-vexil",
+  "version": "0.1.0",
+  "description": "Vexil grammar for tree-sitter",
+  "main": "bindings/node",
+  "types": "bindings/node",
+  "scripts": {
+    "test": "tree-sitter test",
+    "build": "tree-sitter build",
+    "generate": "tree-sitter generate"
+  },
+  "keywords": [
+    "tree-sitter",
+    "parser",
+    "vexil"
+  ],
+  "files": [
+    "grammar.js",
+    "tree-sitter.json",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
+  "dependencies": {
+    "node-addon-api": "^8.2.1",
+    "node-gyp-build": "^4.8.2"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.25.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree-sitter": {
+      "optional": true
+    }
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.vexil",
+      "file-types": [
+        "vxl",
+        "vexil"
+      ],
+      "injection-regex": "^(vxl|vexil)$"
+    }
+  ]
+}
