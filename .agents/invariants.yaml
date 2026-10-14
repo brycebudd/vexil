@@ -1,0 +1,36 @@
+version: "1.0.0"
+
+checks:
+  protected_files:
+    - ".env*"
+    - "*.pem"
+    - "*.key"
+
+  banned_patterns:
+    - pattern: 'console\.log\('
+      message: "Direct console.log statements are prohibited in production code"
+      severity: warning
+      exclude:
+        - "*_test.*"
+        - "scripts/*"
+
+    - pattern: 'fmt\.Println\('
+      message: "Direct fmt.Println statements are prohibited in core parser/library code; use structured output/writer"
+      severity: warning
+      exclude:
+        - "*_test.go"
+        - "cmd/*"
+        - "scripts/*"
+
+    - pattern: 'debugger;'
+      message: "Debug breakpoints must be removed prior to verification"
+      severity: error
+      exclude:
+        - ".agents/*"
+
+  required_patterns:
+    - pattern: '%w'
+      trigger: 'fmt\.Errorf'
+      scope: "*.go"
+      message: "Go error wrapping must use %w with fmt.Errorf"
+      severity: error
