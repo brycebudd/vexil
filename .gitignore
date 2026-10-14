@@ -1,0 +1,9 @@
+# Agent runtime artifacts and worktrees
+.agents/run/
+.agents/worktrees/
+
+# Go build artifacts
+bin/
+*.exe
+*.test
+*.out
