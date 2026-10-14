@@ -47,7 +47,7 @@ func NewRAGChunker(opts ...Option) *RAGChunker {
 // Chunk partitions a Vexil document into semantic chunks bounded by Headings and Tables.
 func (c *RAGChunker) Chunk(doc *domain.Document) ([]ports.Chunk, error) {
 	if doc == nil {
-		return nil, fmt.Errorf("chunk document: document is nil")
+		return nil, fmt.Errorf("chunk document: %w", ErrNilDocument)
 	}
 
 	chunks := make([]ports.Chunk, 0)
