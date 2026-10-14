@@ -1,0 +1,247 @@
+==================
+Strong bold text
+==================
+*bold text*
+
+---
+
+(document
+  (paragraph
+    (strong
+      (text))))
+
+==================
+Emphasis italic text
+==================
+_italic text_
+
+---
+
+(document
+  (paragraph
+    (emphasis
+      (text))))
+
+==================
+Inline code span
+==================
+`code snippet`
+
+---
+
+(document
+  (paragraph
+    (inline_code)))
+
+==================
+Strikethrough text
+==================
+~strikethrough text~
+
+---
+
+(document
+  (paragraph
+    (strikethrough
+      (text))))
+
+==================
+Hyperlink with destination
+==================
+[Vexil Language](https://vexil.org)
+
+---
+
+(document
+  (paragraph
+    (link
+      label: (link_label
+        (text))
+      destination: (link_destination))))
+
+==================
+Media embed with img prefix
+==================
+[System Architecture](img:architecture.png)
+
+---
+
+(document
+  (paragraph
+    (media
+      alt: (media_alt
+        (text))
+      source: (media_source))))
+
+==================
+Media embed with file extension
+==================
+[Hero Banner](https://example.com/banner.svg)
+
+---
+
+(document
+  (paragraph
+    (media
+      alt: (media_alt
+        (text))
+      source: (media_source))))
+
+==================
+Backslash escape sequences
+==================
+Literal \*asterisks\* and \`code\` and \| pipe.
+
+---
+
+(document
+  (paragraph
+    (text)
+    (escape_sequence)
+    (text)
+    (escape_sequence)
+    (text)
+    (escape_sequence)
+    (text)
+    (escape_sequence)
+    (text)
+    (escape_sequence)
+    (text)))
+
+==================
+Mixed inline styles in paragraph
+==================
+Prose with *bold*, _italic_, `code`, and ~strike~ text.
+
+---
+
+(document
+  (paragraph
+    (text)
+    (strong
+      (text))
+    (text)
+    (emphasis
+      (text))
+    (text)
+    (inline_code)
+    (text)
+    (strikethrough
+      (text))
+    (text)))
+
+==================
+Nested inline formatting
+==================
+*bold and _italic_ nested*
+
+---
+
+(document
+  (paragraph
+    (strong
+      (text)
+      (emphasis
+        (text))
+      (text))))
+
+==================
+Inline styling in heading
+==================
+## Section with *Bold* and _Italic_
+
+---
+
+(document
+  (heading
+    (heading_marker)
+    (text)
+    (strong
+      (text))
+    (text)
+    (emphasis
+      (text))))
+
+==================
+Inline styling in list items
+==================
+- Item with `inline code`
+1. Step with *bold* text
+[x] Finished ~task~ item
+
+---
+
+(document
+  (unordered_list_item
+    (text)
+    (inline_code))
+  (ordered_list_item
+    (text)
+    (strong
+      (text))
+    (text))
+  (task_list_item
+    (task_status)
+    (text)
+    (strikethrough
+      (text))
+    (text)))
+
+==================
+Inline styling in blockquote
+==================
+> Quoted *bold* statement
+
+---
+
+(document
+  (blockquote
+    (text)
+    (strong
+      (text))
+    (text)))
+
+==================
+Inline styling in callout
+==================
+!note: *Important* Advisory
+Body with _emphasis_ and [Doc Link](https://docs.vexil.org)
+
+---
+
+(document
+  (callout
+    type: (callout_type)
+    title: (callout_title
+      (strong
+        (text))
+      (text))
+    (text)
+    (emphasis
+      (text))
+    (text)
+    (link
+      label: (link_label
+        (text))
+      destination: (link_destination))))
+
+==================
+Inline styling in table cells
+==================
+::table [Feature | Syntax]
+- *Bold* | `*text*`
+::
+
+---
+
+(document
+  (table
+    (table_header
+      (table_cell)
+      (table_cell))
+    (table_row
+      (table_cell
+        (strong
+          (text)))
+      (table_cell
+        (inline_code)))))
