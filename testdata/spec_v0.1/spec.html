@@ -1,0 +1,60 @@
+<h1>Vexil Document Specification</h1>
+<p>Vexil (.vxl) is a <strong>high-density</strong>, <em>context-preserving</em> structured text format engineered for LLM context windows, deterministic parsing, and semantic chunking. It combines the readability of Markdown with strict single-pass stream guarantees.</p>
+<hr />
+<h2 id="sec-syntax-overview">Structural Overview</h2>
+<p>Vexil partitions documents into deterministic block nodes without lookahead buffers. Inline styling supports <strong>bold text</strong>, <em>italic emphasis</em>, <code>inline code</code>, <s>strikethrough</s>, and <a href="https://vexil.org">hyperlinks</a>. Visual assets are referenced using media syntax: <img src="architecture.png" alt="System Architecture Diagram">.</p>
+<h3>List Structures</h3>
+<p>Document hierarchies utilize strict two-space indentation increments for nested structures.</p>
+<ul>
+<li>Unordered item at root level
+<ul>
+<li>Nested unordered child item</li>
+<li>Another nested sibling item</li>
+</ul>
+</li>
+<li>Secondary root item</li>
+</ul>
+<p>Ordered workflows support explicit indices and automatic counters:</p>
+<ol>
+<li>Initial installation step
+<ol>
+<li>Nested sub-procedure</li>
+<li>Secondary validation sub-procedure</li>
+</ol>
+</li>
+<li>Final deployment phase</li>
+</ol>
+<p>Actionable items are tracked via deterministic task list states:</p>
+<ul>
+<li><input type="checkbox" disabled checked /> Implement single-pass block tokenizer</li>
+<li><input type="checkbox" disabled checked /> Add symmetric inline delimiter stack</li>
+<li><input type="checkbox" disabled /> Benchmark zero-copy stream chunker</li>
+</ul>
+<hr />
+<h2 id="sec-callouts-quotes">Callouts and Citations</h2>
+<p>Executive advisories and prompt injection blocks are declared via prefixed exclamation directives:</p>
+<aside class="callout callout-note"><div class="callout-title">Specification Guidance</div><div class="callout-body">All Vexil parsers must maintain zero external dependencies and zero regular expressions.</div></aside>
+<aside class="callout callout-warning"><div class="callout-title">Deprecated Syntax</div><div class="callout-body">Legacy block decorators without explicit line prefixes are rejected by the strict scanner.</div></aside>
+<aside class="callout callout-important"><div class="callout-title">Memory Allocation Invariant</div><div class="callout-body">Token emission runs in single-pass linear time O(n) without lookahead backtracking.</div></aside>
+<aside class="callout callout-prompt"><div class="callout-title">System Evaluation Instruction</div><div class="callout-body">Verify document structural consistency and emit canonical JSON AST representation.</div></aside>
+<p>Editorial notes and cited references use standardized blockquote markers:</p>
+<blockquote>Context-dense document design eliminates token waste in RAG pipelines.
+Streaming chunk boundaries guarantee atomic semantic retrieval.</blockquote>
+<hr />
+<h2 id="sec-code-tables">Code Fences and Tabular Data</h2>
+<p>Source code listings preserve whitespace verbatim and capture optional language and file identifiers:</p>
+<pre><code class="language-go" data-id="main.go">package main
+
+import (
+	&#34;log&#34;
+	&#34;vexil/pkg/render&#34;
+)
+
+func main() {
+	log.Printf(&#34;Vexil Reference Engine v0.1.0&#34;)
+}</code></pre>
+<p>Tabular datasets define explicit column structures and support escaped pipes and inline code spans:</p>
+<table><thead><tr><th>Construct</th><th>Syntax Pattern</th><th>Target Output</th></tr></thead><tbody><tr><td>Heading Level 1</td><td><code># Title</code></td><td><code>&lt;h1&gt;Title&lt;/h1&gt;</code></td></tr><tr><td>Code Fence</td><td><code>lang id</code></td><td><code>&lt;pre&gt;&lt;code class=&#34;language-lang&#34;&gt;</code></td></tr><tr><td>Escaped Pipes</td><td>Cell | Alpha</td><td>Table cell with literal pipe</td></tr><tr><td>Inline Code Span</td><td><code>a | b</code></td><td>Code span with pipe</td></tr></tbody></table>
+<h3>Detailed Architecture</h3>
+<h4>Pipeline Invariants</h4>
+<p>Every parser implementation guarantees deterministic recovery when encountering unexpected tokens.</p>
